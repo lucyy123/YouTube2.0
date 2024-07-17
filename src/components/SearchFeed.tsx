@@ -1,49 +1,54 @@
-import { Search } from "@mui/icons-material";
-import { IconButton, Paper } from "@mui/material";
-import { FormEvent, useState } from "react";
+import { useEffect, useState } from 'react';
+import { FetchReponseType } from '../vite-env';
+import { fetchData } from '../utils/fetchingData';
+import { useParams, } from 'react-router-dom';
+import { Box, Typography } from '@mui/material';
+import Videos from './Videos';
 
-function SearchFeed() {
-  const [searchVal, setSearchVal] = useState<string>("");
+const SearchFeed = () => {
+    const {query} = useParams()
+    console.log('query:', query)
+    
+  const [dataArr, setdataArr] = useState<FetchReponseType>();
 
-  const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(searchVal);
-  };
+  useEffect(()=>{
+    if(query){
 
+        fetchData(query)
+        .then((res) => {
+            console.log('res:', res)
+            setdataArr(res)
+        })
+        .catch((err) => console.log(err));
+    }else{
+        throw new Error("Please search first")
+    }
+
+  },[query])
   return (
-    <Paper
-      component={"form"}
-      onSubmit={handleSearchSubmit}
-      sx={{
-        borderRadius: "20px",
-        border: "1px solid #e3e3e3",
-        pl: 2,
-        mr: { sm: 5 },
-      }}
-    >
-      <input
-        type="text"
-        placeholder="Search..."
-        style={{
-          border: "none",
-          background: "transparent",
-          outline: "none",
-          width: "25vw",
-        }}
-        value={searchVal}
-        onChange={(e) => setSearchVal(e.target.value)}
-      />
-      <IconButton
-        type="submit"
-        sx={{
-          color: "black",
-          mr: "0.5rem",
-        }}
-      >
-        <Search />
-      </IconButton>
-    </Paper>
-  );
-}
+    
+        <Box
+          sx={{
+            maxHeight: "92vh",
+            overflowY: "auto",
+            flex:2,
+            backgroundColor:"#000",
+         
+          }}
+        >
+            <Typography variant='h4' color={"white"} mb={2} sx={{
+                marginInline:"0.5rem"
+            }} fontWeight={"bold"}>
 
-export default SearchFeed;
+                Search results for <span style={{
+                    color: "#F31503"
+                }}>{query}</span>
+            </Typography>
+
+        <Videos videos={dataArr!} />
+
+        
+        </Box>
+  )}
+  
+export default SearchFeed

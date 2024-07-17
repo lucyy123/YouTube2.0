@@ -13,10 +13,12 @@ const Sidebar = ({selected,setSelected}:SidebarProp) => {
   return (
     <Stack
       direction={"row"}
+    
       sx={{
         overflowY: "auto",
         flexDirection: { md: "column" },
         height: { sx: "auto", md: "95%" },
+        margin:"0rem 1rem"
       }}
     >
       {categories.map((ele, idx) => (
@@ -25,6 +27,7 @@ const Sidebar = ({selected,setSelected}:SidebarProp) => {
           key={idx}
           sx={{
             borderRadius: "20px",
+            width:"auto",
             margin: "0.5rem",
             justifyContent: "start",
             backgroundColor: selected === ele.name ? " rgb(218, 0, 0)" : "none",

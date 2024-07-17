@@ -18,7 +18,7 @@ type DefaultType = {
   width: number;
 };
 type ThumbnailsType = {
-  default: DefaultType;
+  high:DefaultType;
 };
 
 type SnippetType = {
@@ -30,11 +30,22 @@ type SnippetType = {
   thumbnails: ThumbnailsType;
 };
 
+type IdType={
+kind: string, videoId:string
+}
+
 export type ItemsType = {
   snippet: SnippetType;
+  id:IdType
 };
 
 export type FetchReponseType={
   pageInfo: PageInfoType;
   items: ItemsType[];
+}
+
+
+type InitialStateType = {
+  loading:boolean;
+  videos:ItemsType[] | null
 }
