@@ -2,4 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* overflow-y: auto; */
+  /* color: rgb(218, 0, 0); */
+}
+::-webkit-scrollbar{
+  display: none;
 }
