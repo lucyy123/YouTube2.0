@@ -20,7 +20,7 @@ export const fetchData = async (searchVal: string)=> {
             params: {
                 q: searchVal,
                 part: 'snippet,id',
-                regionCode: 'IN',
+                regionCode: 'US',
                 maxResults: '50',
                 order: 'date'
             },
