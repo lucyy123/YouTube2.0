@@ -8,3 +8,8 @@
 ::-webkit-scrollbar{
   display: none;
 }
+
+.react-player {
+  height: 77vh !important;
+  width: 100% !important;
+}

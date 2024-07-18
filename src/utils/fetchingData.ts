@@ -1,29 +1,26 @@
 import axios from "axios";
-import { FetchReponseType } from "../vite-env";
+import { FetchReponseType, VIdeoType } from "../vite-env";
+
+type FetchDataType = {
+
+    q?: string,
+    part?: string,
+    regionCode?: string
+    maxResults?: string
+    order?: string
+    id?: string
+
+}
 
 
 
 
-
-
-export const fetchData = async (searchVal: string)=> {
-
-
-
+export const fetchData = async (params: FetchDataType) => {
     try {
-
-
-
         const options = {
             method: 'GET',
             url: 'https://youtube-v31.p.rapidapi.com/search',
-            params: {
-                q: searchVal,
-                part: 'snippet,id',
-                regionCode: 'US',
-                maxResults: '50',
-                order: 'date'
-            },
+            params,
             headers: {
                 'x-rapidapi-key': import.meta.env.VITE_RAPID_API_KEY,
                 'x-rapidapi-host': 'youtube-v31.p.rapidapi.com'
@@ -31,7 +28,7 @@ export const fetchData = async (searchVal: string)=> {
         };
         const response = await axios(options);
 
-        const data:FetchReponseType = response.data
+        const data: FetchReponseType = response.data
         return data
     } catch (error) {
         console.error(error);
@@ -40,3 +37,34 @@ export const fetchData = async (searchVal: string)=> {
 
 
 }
+
+
+export const fetchSingleVideo = async (id: string) :Promise<VIdeoType | undefined>=> {
+    const options = {
+        method: 'GET',
+        url: `https://youtube-v31.p.rapidapi.com/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${id}`,
+        headers: {
+            'x-rapidapi-key': '80341cefb9msh3f8a4663bf9eed8p18ba70jsn5690f0fce376',
+            'x-rapidapi-host': 'youtube-v31.p.rapidapi.com'
+        }
+    };
+
+    try {
+      const response = await axios(options);
+
+
+ const video:VIdeoType=response.data.items[0]
+ return video
+
+
+
+
+    } catch (error) {
+        console.error(error);
+    }
+
+
+}
+
+
+
