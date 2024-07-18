@@ -6,7 +6,7 @@ const Loader = lazy(() => import("./components/Loader"));
 const Feed = lazy(() => import("./components/Feed"));
 const VideoDetails = lazy(() => import("./components/VideoDetails"));
 const ChannelDetails = lazy(() => import("./components/ChannelDetails"));
-const SearchFeed = lazy(() => import("./components/Searchfeed"));
+const SearchFeed = lazy(() => import("./components/SearchFeed"));
 
 const App = () => {
   return (

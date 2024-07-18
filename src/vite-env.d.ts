@@ -45,7 +45,27 @@ export type FetchReponseType={
 }
 
 
+
 type InitialStateType = {
   loading:boolean;
   videos:ItemsType[] | null
+}
+
+
+type StatisticsType={
+  viewCount:string
+likeCount:string
+favoriteCount:string
+commentCount:string
+}
+
+export type VIdeoType={
+  snippet?:SnippetType,
+  statistics?:StatisticsType
+
+}
+
+// array of object
+export type SingleVideoType={
+video?:VIdeoType
 }

@@ -20,6 +20,7 @@ const Header = () => {
           style={{
             marginLeft:"1rem",
             marginRight: "auto",
+            cursor:"pointer"
           }}
         />
 

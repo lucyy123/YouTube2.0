@@ -14,7 +14,14 @@ const SearchFeed = () => {
   useEffect(()=>{
     if(query){
 
-        fetchData(query)
+        fetchData(
+            {
+                q: query,
+                part: 'snippet,id',
+                regionCode: 'US',
+                maxResults: '50',
+                order: 'date'
+            })
         .then((res) => {
             console.log('res:', res)
             setdataArr(res)

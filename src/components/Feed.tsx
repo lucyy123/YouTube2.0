@@ -16,7 +16,14 @@ const Feed = () => {
   // );
   
   useEffect(() => {
-    fetchData(selected)
+    fetchData(
+      {
+          q: selected,
+          part: 'snippet,id',
+          regionCode: 'US',
+          maxResults: '50',
+          order: 'date'
+      })
       .then((res) => {
         setdataArr(res);
         // dispatch(newRequest());
