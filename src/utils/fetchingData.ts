@@ -46,7 +46,7 @@ export const fetchSingleVideo = async (url: string):Promise<VIdeoType | undefine
         method: 'GET',
         url,
         headers: {
-            'x-rapidapi-key': '80341cefb9msh3f8a4663bf9eed8p18ba70jsn5690f0fce376',
+            'x-rapidapi-key': import.meta.env.VITE_RAPID_API_KEY,
             'x-rapidapi-host': 'youtube-v31.p.rapidapi.com'
         }
     };
