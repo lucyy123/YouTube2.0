@@ -4,6 +4,7 @@ import { fetchData } from '../utils/fetchingData';
 import { useParams, } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 import Videos from './Videos';
+import Loader from './Loader';
 
 const SearchFeed = () => {
     const {query} = useParams()
@@ -52,7 +53,8 @@ const SearchFeed = () => {
                 }}>{query}</span>
             </Typography>
 
-        <Videos videos={dataArr!} />
+            { dataArr==undefined?(<Loader></Loader>):(<Videos videos={dataArr!} />)}
+
 
         
         </Box>

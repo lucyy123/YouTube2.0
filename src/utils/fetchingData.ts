@@ -9,6 +9,8 @@ type FetchDataType = {
     maxResults?: string
     order?: string
     id?: string
+    relatedToVideoId?:string;
+    type?:string;
 
 }
 
@@ -39,10 +41,10 @@ export const fetchData = async (params: FetchDataType) => {
 }
 
 
-export const fetchSingleVideo = async (id: string) :Promise<VIdeoType | undefined>=> {
+export const fetchSingleVideo = async (url: string):Promise<VIdeoType | undefined>=> {
     const options = {
         method: 'GET',
-        url: `https://youtube-v31.p.rapidapi.com/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${id}`,
+        url,
         headers: {
             'x-rapidapi-key': '80341cefb9msh3f8a4663bf9eed8p18ba70jsn5690f0fce376',
             'x-rapidapi-host': 'youtube-v31.p.rapidapi.com'
