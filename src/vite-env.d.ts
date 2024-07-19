@@ -19,6 +19,7 @@ type DefaultType = {
 };
 type ThumbnailsType = {
   high:DefaultType;
+  default?:DefaultType;
 };
 
 type SnippetType = {

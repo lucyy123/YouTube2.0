@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchData } from "../utils/fetchingData";
 import { FetchReponseType } from "../vite-env";
+import Loader from "./Loader";
 import Sidebar from "./Sidebar";
 import Videos from "./Videos";
 
@@ -11,30 +12,20 @@ const Feed = () => {
   const [dataArr, setdataArr] = useState<FetchReponseType>();
   const dispatch = useDispatch();
 
-  // const { loading, videos } = useSelector(
-  //   (state: { searchReducer: InitialStateType }) => state.searchReducer
-  // );
-  
   useEffect(() => {
-    fetchData(
-      {
-          q: selected,
-          part: 'snippet,id',
-          regionCode: 'US',
-          maxResults: '50',
-          order: 'date'
-      })
+    fetchData({
+      q: selected,
+      part: "snippet,id",
+      regionCode: "US",
+      maxResults: "50",
+      order: "date",
+    })
       .then((res) => {
         setdataArr(res);
-        // dispatch(newRequest());
-        // if (res) {
-        //   dispatch(getVideos(res.items));
-        // }
       })
       .catch((err) => console.log(err));
-  }, [dispatch,selected]);
+  }, [dispatch, selected]);
 
-  
   return (
     <Stack
       sx={{
@@ -54,16 +45,17 @@ const Feed = () => {
         <Typography
           variant="body2"
           sx={{
-             mt: "0.5rem", fontSize: "10px", color: "#fff",
-             display: { xs: 'none', sm: 'block' }
-            }}
+            mt: "0.5rem",
+            fontSize: "10px",
+            color: "#fff",
+            display: { xs: "none", sm: "none", md: "block" },
+          }}
         >
           Copoyright 2024 Lucyy123
         </Typography>
       </Box>
 
       <Box
-        margin={"0 2rem "}
         width={"100%"}
         sx={{
           height: { sx: "auto", md: "92vh" },
@@ -73,6 +65,7 @@ const Feed = () => {
           fontSize={"2rem"}
           sx={{
             mb: "1rem",
+            padding:"0rem 0.5rem"
           }}
           fontWeight={"bold"}
           color="#fff"
@@ -93,10 +86,11 @@ const Feed = () => {
             overflowY: "auto",
           }}
         >
-
-<Videos videos={dataArr!} />
-
-        
+          {dataArr == undefined ? (
+            <Loader></Loader>
+          ) : (
+            <Videos videos={dataArr!} />
+          )}
         </Box>
       </Box>
     </Stack>

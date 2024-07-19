@@ -24,8 +24,6 @@ export const categories: CotegoriesType[] = [
 
     { name: 'Trending', icon: Tag, },
     { name: 'Coding', icon: CodeIcon, },
-    { name: 'ReactJS', icon: CodeIcon, },
-    { name: 'NextJS', icon: CodeIcon, },
     { name: 'Music', icon: MusicNoteIcon },
     { name: 'Education', icon: SchoolIcon, },
     { name: 'Podcast', icon: GraphicEqIcon, },
@@ -37,6 +35,8 @@ export const categories: CotegoriesType[] = [
     { name: 'Beauty', icon: FaceRetouchingNaturalIcon, },
     { name: 'Comedy', icon: TheaterComedyIcon, },
     { name: 'Gym', icon: FitnessCenterIcon, },
+    { name: 'ReactJS', icon: CodeIcon, },
+    { name: 'NextJS', icon: CodeIcon, },
     { name: 'Crypto', icon: DeveloperModeIcon, },
 ];
 
